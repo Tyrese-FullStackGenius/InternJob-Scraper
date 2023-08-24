@@ -1,0 +1,9 @@
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/jquery3.6.4.min.js"></script>
+<script>
+$(function(){
+    const host = "https://app."+ location.hostname.replace('www.', '')
+    $("a[data-name='login']").attr("href", host + "/auth/login");
+    $("a[data-name='signup']").attr("href", host + "/auth/registration");
+})
+</script>

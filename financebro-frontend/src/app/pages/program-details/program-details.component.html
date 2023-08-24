@@ -1,0 +1,224 @@
+<mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+
+<div class="card mb-5 mb-xl-8">
+  <div class="card-header border-0">
+    <h3 class="card-title align-items-start flex-column">
+      <span class="card-label fw-bolder fs-3 mb-1">Program overview</span>
+    </h3>
+    <div class="card-toolbar">
+      <ng-container *ngTemplateOutlet="actionButtons"></ng-container>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="form">
+      <h4 class="mb-5">Personal Tracker</h4>
+      <section class="personal-tracker">
+        <div class="personal-tracker__wrapper">
+          <div class="form-check form-check-inline">
+            <div>Submitted</div>
+            <mat-checkbox
+              class="me-2"
+              formControlName="is_application_submitted"
+              id="is_application_submitted"
+            ></mat-checkbox>
+          </div>
+          <div class="form-check form-check-inline">
+            <div>Online Test</div>
+            <mat-checkbox class="me-2" formControlName="is_online_test_taken" id="is_online_test_taken"></mat-checkbox>
+          </div>
+          <div class="form-check form-check-inline">
+            <div>Pre-recorded video interview</div>
+            <mat-checkbox
+              class="me-2"
+              formControlName="is_pre_recorded_video_interview_taken"
+              id="is_pre_recorded_video_interview_taken"
+            ></mat-checkbox>
+          </div>
+          <div class="form-check form-check-inline">
+            <div>Personal interview</div>
+            <mat-checkbox
+              class="me-2"
+              formControlName="is_personal_interview_taken"
+              id="is_personal_interview_taken"
+            ></mat-checkbox>
+          </div>
+          <div class="form-check form-check-inline">
+            <div>Closed</div>
+            <mat-checkbox
+              class="me-2"
+              formControlName="is_application_closed"
+              id="is_application_closed"
+            ></mat-checkbox>
+          </div>
+        </div>
+      </section>
+    </form>
+
+    <br />
+
+    <h4 class="mb-5">Program details</h4>
+    <table class="table table-striped table-sm align-middle" *ngIf="program">
+      <tbody>
+        <tr>
+          <th scope="row" class="w-25">Company</th>
+          <td>
+            <img
+              [src]="commonService.getCompanyImagePath(program.program.company.name)"
+              [alt]="program.program.company.name"
+              height="40"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Title</th>
+          <td>{{ program.program.title }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Description</th>
+          <td [innerHTML]="program.program.description"></td>
+        </tr>
+        <tr *ngIf="program.program.deadline">
+          <th scope="row">Deadline</th>
+          <td>{{ program.program.deadline }}, {{ program.program.deadline_text }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Eligibility</th>
+          <td [innerHTML]="program.program.eligibility"></td>
+        </tr>
+        <tr>
+          <th scope="row">Type</th>
+          <td>{{ program.program.program_type }}, {{ program.program.program_type_description }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Cities</th>
+          <td>
+            <app-content-reduce-view
+              [items]="program.program.cities_mapped | pluck : 'name'"
+              [visible]="100"
+            ></app-content-reduce-view>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Countries</th>
+          <td>
+            <app-content-reduce-view
+              [items]="program.program.cities_mapped | pluck : 'country'"
+              [visible]="100"
+            ></app-content-reduce-view>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Region</th>
+          <td>{{ program.program.region.name }}</td>
+        </tr>
+        <tr>
+          <th scope="row">URL</th>
+          <td>
+            <a [href]="program.program.url" target="_blank">{{ program.program.url }}</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br />
+    <hr />
+    <br />
+
+    <ng-container *ngIf="communityReportedData">
+      <h3 class="mb-5">Community Reported Data</h3>
+      <table class="table table-striped table-sm align-middle">
+        <thead>
+          <tr>
+            <th scope="row" class="w-25 align-top fw-bolder">Questions</th>
+            <th scope="row" class="w-25 align-top fw-bolder">Reported Yes</th>
+            <th scope="row" class="w-25 align-top fw-bolder">Reported No</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cover Letter?</td>
+            <td>{{ communityReportedData.does_ask_for_cover_letter.reported_true }}</td>
+            <td>{{ communityReportedData.does_ask_for_cover_letter.reported_false }}</td>
+          </tr>
+          <tr>
+            <td>Online Test?</td>
+            <td>{{ communityReportedData.was_there_no_online_test.reported_true }}</td>
+            <td>{{ communityReportedData.was_there_no_online_test.reported_false }}</td>
+          </tr>
+          <tr>
+            <td>Video Interview?</td>
+            <td>{{ communityReportedData.was_there_no_pre_recorded_video_interview_stage.reported_true }}</td>
+            <td>{{ communityReportedData.was_there_no_pre_recorded_video_interview_stage.reported_false }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div *ngFor="let questions of communityReportedDataQuestions | keyvalue">
+        <ng-container *ngIf="communityReportedData[questions.key].length">
+          <h4 class="pt-4">{{ questions.value }}:</h4>
+          <ul>
+            <li *ngFor="let item of communityReportedData[questions.key]">{{ item }}</li>
+          </ul>
+        </ng-container>
+      </div>
+    </ng-container>
+
+    <br />
+    <hr />
+    <br />
+
+    <form [formGroup]="formNote" #formEl #formDirective="ngForm">
+      <h4 class="mb-5">Program notes</h4>
+      <table class="table table-striped table-sm align-middle" *ngIf="program">
+        <tbody>
+          <tr>
+            <th scope="row" class="w-25 align-top">Notes</th>
+            <td>
+              <div class="row">
+                <div class="col-8 col-md-10">
+                  <mat-form-field appearance="fill" class="w-100">
+                    <textarea
+                      matInput
+                      placeholder="Please leave your note for this program..."
+                      formControlName="note"
+                    ></textarea>
+                    <mat-error *ngIf="formNote.get('note')?.hasError('required')">Please add some note</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-4 col-md-2 d-flex align-items-center">
+                  <button
+                    type="submit"
+                    class="btn btn-sm fw-bold btn-success ms-5"
+                    [disabled]="formNote.invalid || saving"
+                  >
+                    <ng-container *ngIf="saving">Saving...</ng-container>
+                    <ng-container *ngIf="!saving">Save</ng-container>
+                  </button>
+                </div>
+              </div>
+
+              <table class="table" *ngIf="program.notes">
+                <tr *ngFor="let note of program.notes">
+                  <th class="w-25">{{ note.created_date | date : 'MMM d, y, HH:mm' }}</th>
+                  <td>{{ note.note }}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+
+    <div class="alert alert-danger my-4" *ngIf="apiService.error$ | async as error">{{ error }}</div>
+  </div>
+  <div class="card-footer d-flex justify-content-md-end">
+    <ng-container *ngTemplateOutlet="actionButtons"></ng-container>
+  </div>
+</div>
+
+<ng-template #actionButtons>
+  <button type="button" class="btn btn-sm fw-bold btn-primary" routerLink="/my-programs">Back</button>
+</ng-template>

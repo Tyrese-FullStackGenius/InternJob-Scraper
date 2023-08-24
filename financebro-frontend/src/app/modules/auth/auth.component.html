@@ -1,0 +1,29 @@
+<!-- <div class="d-flex flex-column flex-center flex-column-fluid">
+  <div class="d-flex flex-column flex-center text-center p-10">
+    <div class="card card-flush  w-lg-650px py-5">
+      <div class="card-body py-15 py-lg-20">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<section class="login-signup-flow d-flex flex-column flex-grow-1">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-5 mb-10 mb-lg-0">
+        <div class="logo">
+          <a href="./"><img src="./assets/media/opportunity-logo-color.svg" width="183" height="36" alt="Opportunify" /></a>
+        </div>
+        <div class="pe-lg-8">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+      <div class="col-12 col-lg-7">
+        <a routerLink="/" class="img">
+          <img alt="Logo" src="./assets/media/images/login-cover.png" />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,101 @@
+<mat-dialog-content>
+  <div class="fs-5 text-dark fw-bolder">Filter Options</div>
+
+  <div fxLayout="row">
+    <mat-form-field appearance="standard">
+      <mat-label>Company Type:</mat-label>
+      <mat-select [(ngModel)]="appliedFilters.company_category">
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let category of availableFilters.company_category" [value]="category.value">
+          {{ category.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row">
+    <mat-form-field appearance="standard">
+      <mat-label>Company:</mat-label>
+      <mat-select [(ngModel)]="appliedFilters.company">
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let company of availableFilters.company" [value]="company.value">
+          {{ company.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row">
+    <mat-form-field appearance="standard">
+      <mat-label>Country:</mat-label>
+      <mat-select [(ngModel)]="appliedFilters.country" multiple>
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let country of availableFilters.country" [value]="country.value">
+          {{ country.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row">
+    <mat-form-field appearance="standard">
+      <mat-label>Opportunity Type:</mat-label>
+      <mat-select [(ngModel)]="appliedFilters.program_category">
+        <mat-option>--</mat-option>
+        <mat-option
+          *ngFor="let opportunity_type of this.availableFilters.program_category"
+          [value]="opportunity_type.value"
+        >
+          {{ opportunity_type.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row">
+    <mat-form-field appearance="standard">
+      <mat-label>Region:</mat-label>
+      <mat-select [(ngModel)]="appliedFilters.region">
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let region of this.availableFilters.region" [value]="region.value">
+          {{ region.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row">
+    <mat-form-field appearance="standard">
+      <mat-label>Is Application Open:</mat-label>
+      <mat-select [(ngModel)]="appliedFilters.is_application_open">
+        <mat-option>--</mat-option>
+        <mat-option
+          *ngFor="let is_application_open of this.availableFilters.is_application_open"
+          [value]="is_application_open.value"
+        >
+          {{ is_application_open.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row">
+    <mat-form-field appearance="standard">
+      <mat-label>Does ask for coverletter:</mat-label>
+      <mat-select [(ngModel)]="appliedFilters.does_ask_for_cover_letter">
+        <mat-option>--</mat-option>
+        <mat-option
+          *ngFor="let does_ask_for_cover_letter of this.availableFilters.does_ask_for_cover_letter"
+          [value]="does_ask_for_cover_letter.value"
+        >
+          {{ does_ask_for_cover_letter.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close (click)="resetFilters()">Reset</button>
+  <button mat-raised-button mat-dialog-close color="primary" (click)="applyFilters()">Apply</button>
+</mat-dialog-actions>

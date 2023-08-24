@@ -1,0 +1,108 @@
+<mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+
+<div class="card mb-5 mb-xl-8">
+  <div class="card-header border-0">
+    <h3 class="card-title align-items-start flex-column">
+      <span class="card-label fw-bolder fs-3 mb-1">My interests</span>
+    </h3>
+  </div>
+  <div class="card-body">
+    <table mat-table matSort [dataSource]="programsDataSource">
+      <ng-container matColumnDef="company">
+        <th mat-header-cell *matHeaderCellDef class="bg-light">Company</th>
+        <td mat-cell *matCellDef="let userProgram">
+          <img
+            [src]="commonService.getCompanyImagePath(userProgram.program.company.name)"
+            [alt]="userProgram.program.company.name"
+            height="20"
+          />
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef class="bg-light">Title</th>
+        <td mat-cell *matCellDef="let userProgram">
+          <a [routerLink]="'/program/' + userProgram.program.id" class="text-dark">{{ userProgram.program.title }}</a>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="deadline">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="bg-light">Deadline</th>
+        <td mat-cell *matCellDef="let userProgram">{{ userProgram.program.deadline }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="is_application_open">
+        <th mat-header-cell *matHeaderCellDef class="bg-light">Is Application Open?</th>
+        <td mat-cell *matCellDef="let userProgram">
+          <span class="badge badge-light-success fs-7 fw-bold py-3 px-4" *ngIf="userProgram.program.is_application_open"
+            >Open</span
+          >
+          <span class="badge badge-light-danger fs-7 fw-bold py-3 px-4" *ngIf="!userProgram.program.is_application_open"
+            >Close</span
+          >
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef class="bg-light">City</th>
+        <td mat-cell *matCellDef="let userProgram">
+          <app-content-reduce-view
+            [items]="userProgram.program.cities_mapped | pluck : 'name'"
+          ></app-content-reduce-view>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="country">
+        <th mat-header-cell *matHeaderCellDef class="bg-light">Country</th>
+        <td mat-cell *matCellDef="let userProgram">
+          <app-content-reduce-view
+            [items]="userProgram.program.countries_mapped"
+            [imagesView]="true"
+          ></app-content-reduce-view>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="current_stage">
+        <th mat-header-cell *matHeaderCellDef class="bg-light">Current stage</th>
+        <td mat-cell *matCellDef="let userProgram">
+          <span
+            class="badge fs-7 fw-bold py-3 px-4"
+            [class.badge-light-success]="userProgram.current_stage === 'Submitted'"
+            [class.badge-secondary]="userProgram.current_stage === 'Closed'"
+            [class.badge-light-blue]="userProgram.current_stage === 'Online Test Done'"
+            [class.badge-light-pink]="userProgram.current_stage === 'Personal Interview Done'"
+            [class.badge-light-red]="userProgram.current_stage === 'Not Submitted'"
+            [class.badge-light-info]="userProgram.current_stage === 'Pre-recorded Video Interview Done'"
+            *ngIf="userProgram.current_stage !== '-'"
+            >{{ userProgram.current_stage }}</span
+          >
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="bg-light">Actions</th>
+        <td mat-cell *matCellDef="let userProgram">
+          <button
+            class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1"
+            (click)="removeProgram(userProgram.program.id)"
+            matTooltip="Remove program"
+            matTooltipPosition="above"
+          >
+            <span [inlineSVG]="'./assets/media/trash.svg'" class="svg-icon svg-icon-3"></span>
+          </button>
+          <button
+            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
+            [routerLink]="'/program/' + userProgram.program.id"
+            matTooltip="Job description"
+            matTooltipPosition="above"
+          >
+            <span [inlineSVG]="'./assets/media/eye-icon.svg'" class="svg-icon svg-icon-3"></span>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row fxLayoutGap="24px" *matHeaderRowDef="columnsToDisplay; sticky: true"></tr>
+      <tr mat-row *matRowDef="let rowData; columns: columnsToDisplay"></tr>
+    </table>
+  </div>
+</div>

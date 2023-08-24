@@ -1,0 +1,7 @@
+version: '3.7'
+services:
+  app-service:
+    container_name: app-docker
+    build: .
+    ports:
+      - 4200:80

@@ -1,0 +1,46 @@
+<!--begin::Header-->
+<div class="card-header pt-5">
+  <!--begin::Title-->
+  <h3 class="card-title text-gray-800 fw-bold">External Links</h3>
+  <!--end::Title-->
+
+  <!--begin::Toolbar-->
+  <div class="card-toolbar">
+    <!--begin::Menu-->
+    <!-- <button class="btn btn-icon btn-color-gray-400 btn-active-color-primary justify-content-end"
+      data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-overflow="true">
+      <span [inlineSVG]="'./assets/media/icons/duotune/general/gen023.svg'"
+        class="svg-icon svg-icon-1 svg-icon-gray-300 me-n1"></span>
+    </button>
+    <app-dropdown-menu2></app-dropdown-menu2> -->
+    <!--end::Menu-->
+  </div>
+  <!--end::Toolbar-->
+</div>
+<!--end::Header-->
+
+<!--begin::Body-->
+<div class="card-body pt-5">
+  <ng-container *ngFor="let row of rows; let i = index">
+    <!--begin::Item-->
+    <div class="d-flex flex-stack">
+      <!--begin::Section-->
+      <a href="#" class="text-primary fw-semibold fs-6 me-2">{{row.description}}</a>
+      <!--end::Section-->
+      <!--begin::Action-->
+      <button type="button"
+        class="btn btn-icon btn-sm h-auto btn-color-gray-400 btn-active-color-primary justify-content-end">
+        <span [inlineSVG]="'./assets/media/icons/duotune/arrows/arr095.svg'" class="svg-icon svg-icon-2"></span>
+      </button>
+      <!--end::Action-->
+    </div>
+    <!--end::Item-->
+
+    <ng-container *ngIf="i < (rows.length - 1)">
+      <!--begin::Separator-->
+      <div class="separator separator-dashed my-3"></div>
+      <!--end::Separator-->
+    </ng-container>
+  </ng-container>
+</div>
+<!--end::Body-->

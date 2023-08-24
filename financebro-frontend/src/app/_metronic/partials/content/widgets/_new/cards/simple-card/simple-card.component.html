@@ -1,0 +1,25 @@
+<!--begin::simple card-->
+<div class="card card-flush" [ngClass]="cssClass">
+    <!--begin::Header-->
+    <div class="card-header">
+        <!--begin::Title-->
+        <div class="card-title">
+            <!--begin::Amount-->
+            <h3>{{title}}</h3>
+            <!--end::Amount-->
+        </div>
+        <!--end::Title-->
+    </div>
+    <!--end::Header-->
+
+    <!--begin::Card body-->
+    <div class="card-body d-flex justify-content-between align-items-center">
+        <!--begin::Subtitle-->
+        <p>{{description}}</p>
+        <span>{{stats}}</span>
+
+        <!--end::Subtitle-->
+    </div>
+    <!--end::Card body-->
+</div>
+<!--end::simple card-->

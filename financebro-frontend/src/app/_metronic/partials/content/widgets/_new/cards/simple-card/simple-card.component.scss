@@ -1,0 +1,32 @@
+.card {
+    .card-title {
+        h3 {
+            font-size: 25px;
+            font-weight: 600;
+            @media (max-width: 767px) {
+                font-size: 20px;
+            }
+        }
+    }
+    .card-header {
+        padding: 24px 16px 0;
+        min-height: unset;
+    }
+    .card-body {
+        padding: 10px 16px 24px;
+        p {
+            font-size: 16px;
+            margin: 0;
+            @media (max-width: 767px) {
+                font-size: 14px;
+            }
+        }
+        span {
+            font-size: 25px;
+            font-weight: 500;
+            @media (max-width: 767px) {
+                font-size: 20px;
+            }
+        }
+    }
+}

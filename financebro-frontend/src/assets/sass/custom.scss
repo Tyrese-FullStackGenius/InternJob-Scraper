@@ -1,0 +1,207 @@
+.custom-modal {
+    background-color: rgba($color: #000000, $alpha: 0.4);
+    &.show {
+        display: block;
+    }
+    .modal-dialog {
+        max-width: 850px;
+    }
+    .modal-header {
+        background-color: #F8F9FA;
+    }
+    .modal-header,
+    .modal-body,
+    .modal-footer {
+        padding-left: 35px;
+        padding-right: 35px;
+        border: none;
+        @media (max-width: 767px) {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+    .info {
+        min-width: 115px;
+        span {
+            font-size: 16px;
+            color: #7A7C7F;
+        }
+        p {
+            color: var(--kt-dark);
+            font-weight: 500;
+            font-size: 18px;
+            margin-top: 12px;
+        }
+        p.big {
+            font-size: 22px;
+            font-weight: 600;
+            @media (max-width: 767px) {
+                font-size: 18px;
+            }
+        }
+        .company_logo {
+            img {
+                width: 100%;
+                max-width: 160px;
+            }
+        }
+    }
+    &.delete_modal {
+        .modal-dialog {
+            max-width: 500px;
+        }
+        .act_btns {
+            button,
+            a {
+                min-width: 38%;
+            }
+        }
+    }
+}
+
+.btn-outline-primary {
+    border: 1px solid var(--kt-primary) !important;
+}
+
+.fi {
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    background-size: cover;
+}
+
+.badge-light2-primary {
+    background: #f1faff;
+    color: #009ef7;
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+/// ///////////////////////////////// All Programs
+/// //////////////////////////////////////////////////////////////////////////
+section.table-search {
+    background-color: #495057;
+    border-radius: 8px;
+}
+
+.section-title h1 {
+    font-weight: 500;
+}
+
+.table-sort {
+    label {
+        white-space: nowrap;
+        font-weight: 500;
+        margin-right: 8px;
+    }
+}
+
+.mat-snack-bar-container {
+    background: var(--kt-success);
+    margin-top: auto !important;
+    margin-left: auto !important;
+    max-width: max-content !important;
+    position: fixed !important;
+    bottom: 30px;
+    right: 30px;
+    .mat-simple-snack-bar-content {
+        color: #fff;
+        font-weight: 600;
+        font-size: 14px;
+    }
+}
+
+// .pagination {
+//     li {
+//         a {
+//             border: 1px solid var(--kt-primary-light);
+//             &:hover,
+//             &.active {
+//                 background: var(--kt-primary);
+//                 color: #fff !important;
+//             }
+//         }
+//     }
+// }
+.tracker {
+    &>.row {
+        border-bottom: 1px solid var(--kt-card-border-color);
+        @media (max-width: 767px) {
+            border: none;
+            flex-wrap: nowrap;
+            white-space: nowrap;
+            overflow-x: scroll;
+            padding-bottom: 15px;
+        }
+    }
+    .col-auto {
+        @media (min-width: 768px) {
+            margin-bottom: -11px;
+        }
+        @media (max-width: 767px) {
+            margin-left: 15px;
+            &:first-of-type {
+                margin-left: 0;
+            }
+        }
+    }
+}
+
+.program_details {
+    padding: 10px 10px;
+    border-radius: 5px;
+    &:nth-child(odd) {
+        background-color: var(--kt-light);
+    }
+    .company_logo {
+        max-width: 150px;
+    }
+    p {
+        font-size: 13.975px;
+    }
+    .col-md-3 {
+        @media (max-width: 767px) {
+            margin-bottom: 20px;
+        }
+        p {
+            margin: 0;
+        }
+    }
+}
+
+.notes {
+    .field {
+        width: calc(100% - 85px);
+        @media (max-width: 767px) {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+    }
+}
+
+.card-header {
+    &.border-t {
+        border-top: 1px solid var(--kt-card-border-color) !important;
+    }
+}
+
+.pic_uploader {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: -10px;
+    bottom: -10px;
+    cursor: pointer;
+    input {
+        position: absolute;
+        opacity: 0;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+    }
+}

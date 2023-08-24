@@ -1,0 +1,18 @@
+:host {
+  width: 100%;
+}
+table {
+  width: 100%;
+}
+
+.mat-column-title {
+  width: 20%;
+}
+.mat-column-city {
+  width: 20%;
+}
+.mat-column-deadline,
+.mat-column-actions {
+  text-align: center;
+  white-space: nowrap;
+}

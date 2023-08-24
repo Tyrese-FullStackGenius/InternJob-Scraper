@@ -1,0 +1,214 @@
+<div class="card">
+    <!-- begin::Header -->
+    <div class="card-header border-0 pt-5">
+        <h3 class="card-title align-items-start flex-column">
+            <span class="card-label fw-bolder fs-3 mb-1">{{tableOuterTitle}}</span>
+        </h3>
+        <div class="card-toolbar">
+            <ng-container *ngIf="sortingOpt === false">
+                <a class="btn btn-sm btn-primary" (click)="goToPage('/all-programs');">View All</a>
+            </ng-container>
+            <ng-container *ngIf="sortingOpt === true">
+                <div class="table-sort d-flex align-items-center">
+                    <label>Sort By:</label>
+                    <select name="Type" class="form-select form-select-solid">
+                        <option value="All">All</option>
+                        <option value="Latest">Latest</option>
+                        <option value="Open positions">Open positions</option>
+                        <option value="Close Positions">Close Positions</option>
+                    </select>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+    <!-- end::Header -->
+    <!-- begin::Body -->
+    <div class="card-body pt-3 pb-5">
+        <!-- begin::Table container -->
+        <div class="table-responsive">
+            <!-- begin::Table -->
+            <table class="table align-middle gs-0 gy-4">
+                <!-- begin::Table head -->
+                <thead>
+                    <tr class="fw-bolder text-muted bg-light">
+                        <th class="ps-4 min-w-125px rounded-start">Company</th>
+                        <th class="min-w-200px">Job Title</th>
+                        <th class="min-w-150px">Country</th>
+                        <th class="min-w-150px">City</th>
+                        <th class="min-w-200px">Program type</th>
+                        <th class="min-w-125px">Deadline</th>
+                        <th class="min-w-150px text-end rounded-end"></th>
+                    </tr>
+                </thead>
+                <!-- end::Table head -->
+                <!-- begin::Table body -->
+                <tbody>
+                    <tr *ngFor="let item of items">
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <div class="symbol me-5">
+                                    <img src={{item.companyLogo}} class="" alt="" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <p class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                                {{item.title}}
+                            </p>
+                        </td>
+                        <td>
+                            <p class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                                <span class={{item.flagClass}}></span> {{item.country}}
+                            </p>
+                        </td>
+                        <td>
+                            <p class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                                {{item.city}}
+                            </p>
+                        </td>
+                        <td>
+                            <ng-container *ngIf="item.programType==='fulltime'">
+                                <span class="badge badge-light-success fs-7 fw-bold py-3 px-4">{{item.program}}</span>
+                            </ng-container>
+                            <ng-container *ngIf="item.programType==='ltintern'">
+                                <span class="badge badge-light-primary fs-7 fw-bold py-3 px-4">{{item.program}}</span>
+                            </ng-container>
+                            <ng-container *ngIf="item.programType==='internship'">
+                                <span class="badge badge-light2-primary fs-7 fw-bold py-3 px-4">{{item.program}}</span>
+                            </ng-container>
+                        </td>
+                        <td>
+                            <p class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                                {{item.deadline}}
+                            </p>
+                        </td>
+                        <td class="text-end">
+                            <ng-container *ngIf="item.jobLink">
+                                <a href={{item.jobLink}} target="_blank" class="btn btn-primary btn-sm px-4 me-2">Apply</a>
+                            </ng-container>
+                            <button class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1" [ngClass]="postSaved ? 'active': ''" (click)="postSaved ? openSnackBar('Already Saved!') : openSnackBar('Saved Successfully!')">
+                                <span [inlineSVG]="'./assets/media/heart-add.svg'" class="svg-icon svg-icon-3"></span>
+                            </button>
+                            <button type="button" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" (click)="openModal()">
+                                <span [inlineSVG]="'./assets/media/eye-icon.svg'" class="svg-icon svg-icon-3"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+                <!-- end::Table body -->
+            </table>
+            <!-- end::Table -->
+            <ul class="pagination">
+                <li class="page-item previous">
+                    <a class="page-link cursor-pointer">
+                        <i class="previous"></i>
+                    </a>
+                </li>
+
+                <li class="page-item active">
+                    <a class="page-link cursor-pointer"> 1 </a>
+                </li>
+
+                <li class="page-item">
+                    <a class="page-link cursor-pointer"> 2 </a>
+                </li>
+
+                <li class="page-item">
+                    <a class="page-link cursor-pointer"> 3 </a>
+                </li>
+
+                <li class="page-item">
+                    <a class="page-link cursor-pointer"> 4 </a>
+                </li>
+
+                <li class="page-item">
+                    <a class="page-link cursor-pointer"> 5 </a>
+                </li>
+
+                <li class="page-item">
+                    <a class="page-link cursor-pointer"> 6 </a>
+                </li>
+
+                <li class="page-item next">
+                    <a class="page-link cursor-pointer">
+                        <i class="next"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- end::Table container -->
+    </div>
+    <!-- begin::Body -->
+    <!-- Modal -->
+    <div class="modal fade custom-modal" [ngClass]="ShowModal ? 'show': ''">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="fs-2qx fw-bolder">Info</h2>
+                    <button type="button" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" (click)="closeModal()">
+                        <span class="svg-icon svg-icon-1" [inlineSVG]="'./assets/media/icons/duotune/arrows/arr061.svg'"></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-0">
+                        <div class="col-12 mb-8">
+                            <div class="info">
+                                <span>Job Title:</span>
+                                <p class="big">Risk Data Analyst Support</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-8">
+                            <div class="info">
+                                <span>Company:</span>
+                                <div class="company_logo">
+                                    <img src="./assets/media/company/bnp_paribas.svg" class="w-100" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-8 d-md-flex justify-content-center">
+                            <div class="info">
+                                <span>Program Type:</span>
+                                <p>Internship</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-8 d-md-flex justify-content-end">
+                            <div class="info">
+                                <span>Eligibility:</span>
+                                <p>Beginner</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-8 mb-md-0">
+                            <div class="info">
+                                <span>Deadline:</span>
+                                <p>October 30, 2017</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-8 mb-md-0 d-md-flex justify-content-center">
+                            <div class="info">
+                                <span>City:</span>
+                                <p>Florence</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 d-md-flex justify-content-end">
+                            <div class="info">
+                                <span>Country:</span>
+                                <p>Italy</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer d-block">
+                    <div class="row justify-content-center g-0">
+                        <div class="col-md-6 ps-md-3">
+                            <button type="button" class="btn btn-primary w-100">Apply Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <app-modal #modal [modalConfig]="modalConfig">
+    Modal body html
+</app-modal>
+<button class="btn btn-primary" (click)="openModal()">Open modal</button> -->

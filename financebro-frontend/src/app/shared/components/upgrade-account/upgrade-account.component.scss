@@ -1,0 +1,11 @@
+:host {
+  display: contents;
+}
+
+button.btn {
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1) !important;
+
+  &.scaled {
+    transform: scale(1.5);
+  }
+}

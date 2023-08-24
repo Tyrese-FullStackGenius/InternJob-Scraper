@@ -1,0 +1,7 @@
+/logs
+/venv
+/.idea
+/db.sqlite3
+/.envs/.env
+/static
+__pycache__

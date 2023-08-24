@@ -1,0 +1,17 @@
+table {
+    tbody {
+        tr {
+            border-top: 1px solid var(--kt-primary-light);
+            &:first-of-type {
+                border-top: none;
+            }
+        }
+    }
+}
+
+.symbol>img {
+    width: 110px;
+    height: auto;
+    border-radius: 0;
+    max-height: 50px;
+}

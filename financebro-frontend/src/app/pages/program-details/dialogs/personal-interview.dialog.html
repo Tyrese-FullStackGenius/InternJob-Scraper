@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Hey!</h1>
+<div mat-dialog-content>
+  <div class="py-4">
+    <!--    <div>-->
+    <!--      <mat-checkbox [(ngModel)]="data.was_there_no_online_test">Was there not an online test?</mat-checkbox>-->
+    <!--    </div>-->
+    <!--    <div>-->
+    <!--      <mat-checkbox [(ngModel)]="data.was_there_no_pre_recorded_video_interview_stage "-->
+    <!--        >Was there not a video interview stage?</mat-checkbox-->
+    <!--      >-->
+    <!--    </div>-->
+    <mat-form-field appearance="fill" class="w-100">
+      <textarea
+        matInput
+        placeholder="What were the personal interview questions?"
+        [(ngModel)]="data.personal_interview_questions"
+      ></textarea>
+    </mat-form-field>
+  </div>
+</div>
+<div mat-dialog-actions class="d-flex justify-content-end">
+  <button mat-raised-button [mat-dialog-close]="data" color="primary">Save</button>
+</div>

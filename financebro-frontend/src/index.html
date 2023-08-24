@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Opportunify</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="shortcut icon" href="./assets/media/favicon-dark.svg" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
+    <link rel="stylesheet" id="layout-styles-anchor" href="./assets/splash-screen.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,800;0,900;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preload" as="image" href="/assets/media/banks/bank_of_america.svg" />
+    <link rel="preload" as="image" href="/assets/media/banks/barclays.svg" />
+    <link rel="preload" as="image" href="/assets/media/banks/bnp_paribas.svg" />
+    <link rel="preload" as="image" href="/assets/media/banks/citibank.svg" />
+    <link rel="preload" as="image" href="/assets/media/banks/deutsche_bank.svg" />
+    <link rel="preload" as="image" href="/assets/media/banks/evercore.svg" />
+    <link rel="preload" as="image" href="/assets/media/banks/goldman_sachs.svg" />
+    <link rel="preload" as="image" href="/assets/media/banks/hsbc.svg" />
+    <link rel="preload" as="image" href="/assets/media/banks/jp_morgan.svg" />
+    <link rel="preload" as="image" href="/assets/media/banks/lazard.svg" />
+    <link rel="preload" as="image" href="/assets/media/banks/morgan_stanley.svg" />
+    <link rel="preload" as="image" href="/assets/media/banks/rothschild.svg" />
+    <link rel="preload" as="image" href="/assets/media/banks/societe_generale.svg" />
+  </head>
+
+  <body root id="kt_body" class="mat-typography">
+    <!-- <body root id="kt_body" class="mat-typography" direction="rtl" dir="rtl" style="direction: rtl"></body> -->
+    <!--begin::Theme mode setup on page load-->
+    <script>
+      if (document.documentElement) {
+        var defaultThemeMode = 'system'
+
+        var hasKTName = document.body.hasAttribute('data-kt-name')
+        var lsKey = 'kt_' + (hasKTName ? name + '_' : '') + 'theme_mode_value'
+        var themeMode = localStorage.getItem(lsKey)
+        if (!themeMode) {
+          if (defaultThemeMode === 'system') {
+            themeMode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+          } else {
+            themeMode = defaultThemeMode
+          }
+        }
+
+        document.documentElement.setAttribute('data-theme', themeMode)
+      }
+    </script>
+    <!--end::Theme mode setup on page load-->
+    <div id="splash-screen" class="splash-screen">
+      <img src="./assets/media/logos/default-small.png" alt="" />
+      <span>Loading ...</span>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,136 @@
+<div class="card">
+    <!-- begin::Header -->
+    <div class="card-header border-0 pt-5">
+        <h3 class="card-title align-items-start flex-column">
+            <span class="card-label fw-bolder fs-3 mb-1">My Interests</span>
+        </h3>
+        <div class="card-toolbar">
+            <div class="table-sort d-flex align-items-center">
+                <label>Sort By:</label>
+                <select name="Type" class="form-select form-select-solid">
+                        <option value="All">All</option>
+                        <option value="Recent">Recently opened</option>
+                        <option value="Closing soon">Closing soon</option>
+                    </select>
+            </div>
+        </div>
+    </div>
+    <!-- end::Header -->
+    <!-- begin::Body -->
+    <div class="card-body py-3">
+        <!-- begin::Table container -->
+        <div class="table-responsive">
+            <!-- begin::Table -->
+            <table class="table align-middle gs-0 gy-4">
+                <!-- begin::Table head -->
+                <thead>
+                    <tr class="fw-bolder text-muted bg-light">
+                        <th class="ps-4 min-w-100px rounded-start">Company</th>
+                        <th class="min-w-200px">Job Title</th>
+                        <th class="min-w-150px">Country</th>
+                        <th class="min-w-150px">City</th>
+                        <th class="min-w-150px">Application Status</th>
+                        <th class="min-w-125px">Deadline</th>
+                        <th class="min-w-150px">Personal Tracker</th>
+                        <th class="min-w-150px text-end rounded-end"></th>
+                    </tr>
+                </thead>
+                <!-- end::Table head -->
+                <!-- begin::Table body -->
+                <tbody>
+                    <tr *ngFor="let item of items">
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <div class="symbol me-5">
+                                    <img src={{item.companyLogo}} class="" alt="" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <p class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                                {{item.title}}
+                            </p>
+                        </td>
+                        <td>
+                            <p class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                                <span class={{item.flagClass}}></span> {{item.country}}
+                            </p>
+                        </td>
+                        <td>
+                            <p class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                                {{item.city}}
+                            </p>
+                        </td>
+                        <td>
+                            <ng-container *ngIf="item.program==='Open'">
+                                <span class="badge badge-light-success fs-7 fw-bold py-3 px-4">{{item.program}}</span>
+                            </ng-container>
+                            <ng-container *ngIf="item.program==='Close'">
+                                <span class="badge badge-light-danger fs-7 fw-bold py-3 px-4">{{item.program}}</span>
+                            </ng-container>
+                        </td>
+                        <td>
+                            <p class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                                {{item.deadline}}
+                            </p>
+                        </td>
+                        <td>
+                            <p class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                                <ng-container *ngIf="item.tracker==='Submitted'">
+                                    <span class="badge badge-light-primary fs-7 fw-bold py-3 px-4">{{item.tracker}}</span>
+                                </ng-container>
+                                <ng-container *ngIf="item.tracker==='Online test'">
+                                    <span class="badge badge-light-warning fs-7 fw-bold py-3 px-4">{{item.tracker}}</span>
+                                </ng-container>
+                                <ng-container *ngIf="item.tracker==='Video interview'">
+                                    <span class="badge badge-light-dark fs-7 fw-bold py-3 px-4">{{item.tracker}}</span>
+                                </ng-container>
+                                <ng-container *ngIf="item.tracker==='Interview'">
+                                    <span class="badge badge-light-success fs-7 fw-bold py-3 px-4">{{item.tracker}}</span>
+                                </ng-container>
+                                <ng-container *ngIf="item.tracker==='Close'">
+                                    <span class="badge badge-light-danger fs-7 fw-bold py-3 px-4">{{item.tracker}}</span>
+                                </ng-container>
+                            </p>
+                        </td>
+                        <td class="text-end">
+                            <ng-container *ngIf="item.jobLink">
+                                <a href={{item.jobLink}} target="_blank" class="btn btn-primary btn-sm px-4 me-2">Apply</a>
+                            </ng-container>
+                            <button class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1" (click)="DeleteConfirm()">
+                                <span [inlineSVG]="'./assets/media/trash.svg'" class="svg-icon svg-icon-3"></span>
+                            </button>
+                            <button type="button" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" (click)="goToPage('/program-details');">
+                                <span [inlineSVG]="'./assets/media/eye-icon.svg'" class="svg-icon svg-icon-3"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+                <!-- end::Table body -->
+            </table>
+            <!-- end::Table -->
+        </div>
+        <!-- end::Table container -->
+    </div>
+    <!-- begin::Body -->
+    <!-- Modal -->
+    <div class="modal fade custom-modal delete_modal" [ngClass]="ConfrimDelete ? 'show': ''">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="fs-1 fw-bolder">Delete Cofirmation</h2>
+                    <button type="button" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" (click)="CancelDelete()">
+                        <span class="svg-icon svg-icon-1" [inlineSVG]="'./assets/media/icons/duotune/arrows/arr061.svg'"></span>
+                    </button>
+                </div>
+                <div class="modal-body text-center py-10">
+                    <h3 class=" fw-bold">Are you sure you want to Delete?</h3>
+                    <div class="act_btns mt-10">
+                        <button class="btn btn-primary btn-sm px-4 me-2">Cancel</button>
+                        <button class="btn btn-danger btn-sm px-4">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

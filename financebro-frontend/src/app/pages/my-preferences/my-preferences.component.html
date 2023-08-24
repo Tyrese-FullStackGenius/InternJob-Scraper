@@ -1,0 +1,60 @@
+<mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+
+<form [formGroup]="form">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title align-items-start flex-column">
+        <span class="card-label fw-bolder fs-3 mb-1">My Preferences</span>
+      </h3>
+    </div>
+    <div class="card-body">
+      <table class="table table-striped table-sm align-middle" *ngIf="!loading">
+        <tbody>
+          <tr>
+            <th scope="row" class="fw-bolder w-50">Regions</th>
+            <td>
+              <mat-form-field appearance="standard" class="w-100">
+                <mat-label>Regions</mat-label>
+                <mat-select formControlName="regions" multiple>
+                  <mat-option *ngFor="let region of allPreferences.region" [value]="region.value">{{
+                    region.viewValue
+                  }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row" class="fw-bolder">Company Categories</th>
+            <td>
+              <mat-form-field appearance="standard" class="w-100">
+                <mat-label>Company Categories</mat-label>
+                <mat-select formControlName="company_categories" multiple>
+                  <mat-option
+                    *ngFor="let companyCategory of allPreferences.company_category"
+                    [value]="companyCategory.value"
+                    >{{ companyCategory.viewValue }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row" class="fw-bolder">Program Categories</th>
+            <td>
+              <mat-form-field appearance="standard" class="w-100">
+                <mat-label>Program Categories</mat-label>
+                <mat-select formControlName="program_categories" multiple>
+                  <mat-option
+                    *ngFor="let programCategory of allPreferences.program_category"
+                    [value]="programCategory.value"
+                    >{{ programCategory.viewValue }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</form>

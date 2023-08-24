@@ -1,0 +1,55 @@
+<!--begin::Menu wrapper-->
+<div id="kt_app_sidebar_menu_wrapper" class="app-sidebar-wrapper hover-scroll-overlay-y my-5" data-kt-scroll="true"
+  data-kt-scroll-activate="true" data-kt-scroll-height="auto"
+  data-kt-scroll-dependencies="#kt_app_sidebar_logo, #kt_app_sidebar_footer"
+  data-kt-scroll-wrappers="#kt_app_sidebar_menu" data-kt-scroll-offset="5px" data-kt-scroll-save-state="true">
+  <!--begin::Menu-->
+  <div class="menu menu-column menu-rounded menu-sub-indention px-3" id="#kt_app_sidebar_menu" data-kt-menu="true"
+    data-kt-menu-expand="false">
+    <div class="menu-item">
+      <a class="menu-link without-sub" routerLink="/dashboard" routerLinkActive="active"><span class="menu-icon">
+          <span [inlineSVG]="'./assets/media/icons/duotune/general/gen025.svg'" class="svg-icon svg-icon-2"></span>
+        </span>
+        <span class="menu-title">Dashboard</span></a>
+    </div>
+    <div class="menu-item">
+      <a class="menu-link without-sub" routerLink="/programs" routerLinkActive="active"><span class="menu-icon">
+          <span [inlineSVG]="'./assets/media/programs-icon.svg'" class="svg-icon svg-icon-2"></span>
+        </span>
+        <span class="menu-title">Programs</span></a>
+    </div>
+    <ng-container *ngIf="authService.currentUser$ | async as user">
+      <div [class.opacity-25]="!user.isPaid">
+        <div class="menu-item">
+          <a class="menu-link without-sub" routerLink="/my-programs" routerLinkActive="active"><span class="menu-icon">
+            <span [inlineSVG]="'./assets/media/interest-icon.svg'" class="svg-icon svg-icon-2"></span>
+          </span>
+            <span class="menu-title">My interests</span></a>
+        </div>
+        <div class="menu-item">
+          <a class="menu-link without-sub" routerLink="/my-preferences" routerLinkActive="active"><span class="menu-icon">
+            <span [inlineSVG]="'./assets/media/settings-icon.svg'" class="svg-icon svg-icon-2"></span>
+          </span>
+            <span class="menu-title">My Settings</span></a>
+        </div>
+        <div class="menu-item">
+          <a class="menu-link without-sub" routerLink="/email-preferences" routerLinkActive="active"><span class="menu-icon">
+            <span [inlineSVG]="'./assets/media/email-settings.svg'" class="svg-icon svg-icon-2"></span>
+          </span>
+            <span class="menu-title">Email Settings</span></a>
+        </div>
+        <div class="menu-item">
+          <a class="menu-link without-sub" routerLink="/customer-info" routerLinkActive="active"><span class="menu-icon">
+            <span [inlineSVG]="'./assets/media/email-settings.svg'" class="svg-icon svg-icon-2"></span>
+          </span>
+            <span class="menu-title">Chrome Extension Info</span></a>
+        </div>
+      </div>
+      <div class="mt-5 text-center" *ngIf="!user.isPaid">
+        <app-upgrade-account></app-upgrade-account>
+      </div>
+    </ng-container>
+  </div>
+  <!--end::Menu-->
+</div>
+<!--end::Menu wrapper-->

@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Hey!</h1>
+<div mat-dialog-content>
+  <p class="py-4">
+    <mat-checkbox [(ngModel)]="data.does_ask_for_cover_letter">Was there was a cover letter?</mat-checkbox>
+  </p>
+</div>
+<div mat-dialog-actions class="d-flex justify-content-end">
+  <button mat-raised-button [mat-dialog-close]="data" color="primary">Save</button>
+</div>

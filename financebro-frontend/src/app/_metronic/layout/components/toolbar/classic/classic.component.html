@@ -1,0 +1,39 @@
+<ng-container *ngIf="appToolbarFilterButton">
+  <!--begin::Filter menu-->
+  <div class="m-0">
+    <!--begin::Menu toggle-->
+    <a href="#" class="btn btn-sm btn-flex fw-bold" [ngClass]="daterangepickerButtonClass" data-kt-menu-trigger="click"
+      data-kt-menu-placement="bottom-end">
+      <span [inlineSVG]="'./assets/media/icons/duotune/general/gen031.svg'"
+        class="svg-icon svg-icon-6 svg-icon-muted me-1"></span>
+      Filter
+    </a>
+    <!--end::Menu toggle-->
+
+    <app-dropdown-menu1></app-dropdown-menu1>
+  </div>
+  <!--end::Filter menu-->
+</ng-container>
+
+<ng-container *ngIf="appToolbarDaterangepickerButton">
+  <div data-kt-daterangepicker="true" data-kt-daterangepicker-opens="left"
+    class="btn btn-sm fw-bold  d-flex align-items-center px-4" [ngClass]="daterangepickerButtonClass">
+    <!--begin::Display range-->
+    <div class="text-gray-600 fw-bold">
+      Loading date range...
+    </div>
+    <!--end::Display range-->
+    <span [inlineSVG]="'./assets/media/icons/duotune/general/gen014.svg'" class="svg-icon svg-icon-1 ms-2 me-0"></span>
+  </div>
+</ng-container>
+
+<!--begin::Secondary button-->
+<a href="#" class="btn btn-sm btn-flex btn-light fw-bold">
+  Filter
+</a>
+<!--end::Secondary button-->
+
+<!--begin::Primary button-->
+<a href="#" class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal"
+  data-bs-target="#kt_modal_create_app">Create</a>
+<!--end::Primary button-->

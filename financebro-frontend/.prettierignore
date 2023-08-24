@@ -1,0 +1,12 @@
+.angular
+.idea
+coverage
+node_modules
+www
+platforms
+plugins
+dist
+android
+@info
+src/assets/
+src/app/_metronic/

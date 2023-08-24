@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Hey!</h1>
+<div mat-dialog-content>
+  <p class="py-4">
+    <mat-form-field appearance="standard" class="w-100">
+      <mat-label>Application close reason</mat-label>
+      <mat-select [(ngModel)]="data.application_close_reason">
+        <mat-option *ngFor="let reason of ProgramCloseReason" [value]="reason">{{ reason }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </p>
+</div>
+<div mat-dialog-actions class="d-flex justify-content-end">
+  <button mat-raised-button [mat-dialog-close]="data" color="primary">Save</button>
+</div>

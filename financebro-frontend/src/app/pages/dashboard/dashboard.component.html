@@ -1,0 +1,302 @@
+<mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+
+<ng-container *ngIf="!loading">
+  <div class="row mb-5 mb-xl-10">
+    <div class="col-xl-6 mb-4 mb-md-5 mb-xl-10" *ngIf="data">
+      <div class="row">
+        <div class="col-md-6 mb-4 mb-md-5 mb-xl-10">
+          <app-stats-widget5
+            pageLink="/all-programs"
+            svgIcon="./assets/media/summer-icon.svg"
+            linkIcon="./assets/media/link-icon.svg"
+            class="card bg-info hoverable card-xl-stretch"
+            color="primary"
+            iconColor="white"
+            [title]="data.summer_internships_count"
+            description="Summer Internships Openings"
+          ></app-stats-widget5>
+        </div>
+        <div class="col-md-6 mb-4 mb-md-5 mb-xl-10">
+          <app-stats-widget5
+            pageLink="/all-programs"
+            svgIcon="./assets/media/off-cycle.svg"
+            linkIcon="./assets/media/link-icon.svg"
+            class="card bg-success hoverable card-xl-stretch"
+            color="primary"
+            iconColor="white"
+            [title]="data.offcycle_internships_count"
+            description="Off-Cycle Internships Openings"
+          ></app-stats-widget5>
+        </div>
+        <div class="col-md-6 mb-4 mb-md-5 mb-xl-10">
+          <app-stats-widget5
+            pageLink="/all-programs"
+            svgIcon="./assets/media/spring-week.svg"
+            linkIcon="./assets/media/link-icon.svg"
+            class="card bg-dark hoverable card-xl-stretch"
+            color="primary"
+            iconColor="white"
+            [title]="data.spring_internships_count"
+            description="Spring-Week Opportunities"
+          ></app-stats-widget5>
+        </div>
+        <div class="col-md-6 mb-4 mb-md-5 mb-xl-10">
+          <app-stats-widget5
+            pageLink="/all-programs"
+            svgIcon="./assets/media/company-icon.svg"
+            linkIcon="./assets/media/link-icon.svg"
+            class="card bg-warning hoverable card-xl-stretch"
+            color="primary"
+            iconColor="white"
+            [title]="data.total_open_opportunities"
+            description="Total Available Opportunities"
+          ></app-stats-widget5>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-6 mb-4 mb-md-5 mb-xl-10">
+      <app-chart-oppurtunity></app-chart-oppurtunity>
+    </div>
+    <div class="col-xl-5 mb-4 mb-md-5 mb-xl-10">
+      <app-chart-app-submitted></app-chart-app-submitted>
+    </div>
+    <div class="col-xl-7" *ngIf="data">
+      <div class="card">
+        <div class="card-header border-0 pt-5">
+          <h3 class="card-title align-items-start flex-column">
+            <span class="card-label fw-bolder fs-3 mb-1">Recent Posts</span>
+          </h3>
+          <div class="card-toolbar">
+            <a class="btn btn-sm btn-primary" routerLink="/programs">View All</a>
+          </div>
+        </div>
+        <div class="card-body pt-3 pb-5">
+          <div class="table-responsive">
+            <table class="table align-middle gs-0 gy-4">
+              <thead>
+                <tr class="fw-bolder text-muted bg-light">
+                  <th class="ps-4 min-w-125px rounded-start">Company</th>
+                  <th class="min-w-200px">Job Title</th>
+                  <th class="min-w-150px">Country</th>
+                  <th class="min-w-150px">City</th>
+                  <th class="min-w-200px">Program type</th>
+                  <th class="min-w-125px">Deadline</th>
+                  <th class="min-w-150px text-end rounded-end"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <div class="me-5">
+                        <img src="./assets/media/company/bnp_paribas.svg" class="w-100" alt="" />
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <p class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                      Sales & Trading Summer Internship
+                    </p>
+                  </td>
+                  <td>
+                    <p class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                      <span class="fi fi-it"></span> Italy
+                    </p>
+                  </td>
+                  <td>
+                    <p class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">Milan</p>
+                  </td>
+                  <td>
+                    <span class="badge badge-light2-primary fs-7 fw-bold py-3 px-4">Internship</span>
+                  </td>
+                  <td>
+                    <p class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">Jul 14, 2023</p>
+                  </td>
+                  <td class="text-end">
+                    <a
+                      href="https://group.bnpparibas/en/careers/job-offer/risk-data-analyst-support"
+                      target="_blank"
+                      class="btn btn-primary btn-sm px-4 me-2"
+                      >Apply</a
+                    >
+                    <button class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1">
+                      <span [inlineSVG]="'./assets/media/heart-add.svg'" class="svg-icon svg-icon-3"></span>
+                    </button>
+                    <button type="button" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                      <span [inlineSVG]="'./assets/media/eye-icon.svg'" class="svg-icon svg-icon-3"></span>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <div class="me-5">
+                        <img src="./assets/media/company/societe_generale.svg" class="w-100" alt="" />
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <p class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                      Asset Management Off-Cycle internship
+                    </p>
+                  </td>
+                  <td>
+                    <p class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                      <span class="fi fi-it"></span> UK
+                    </p>
+                  </td>
+                  <td>
+                    <p class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">London</p>
+                  </td>
+                  <td>
+                    <span class="badge badge-light2-primary fs-7 fw-bold py-3 px-4">Internship</span>
+                  </td>
+                  <td>
+                    <p class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">Jul 14, 2023</p>
+                  </td>
+                  <td class="text-end">
+                    <a
+                      href="https://group.bnpparibas/en/careers/job-offer/risk-data-analyst-support"
+                      target="_blank"
+                      class="btn btn-primary btn-sm px-4 me-2"
+                      >Apply</a
+                    >
+                    <button class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1">
+                      <span [inlineSVG]="'./assets/media/heart-add.svg'" class="svg-icon svg-icon-3"></span>
+                    </button>
+                    <button type="button" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                      <span [inlineSVG]="'./assets/media/eye-icon.svg'" class="svg-icon svg-icon-3"></span>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <div class="me-5">
+                        <img src="./assets/media/company/barclays.svg" class="w-100" alt="" />
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <p class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                      Compliance Analyst - Summer Internship
+                    </p>
+                  </td>
+                  <td>
+                    <p class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                      <span class="fi fi-it"></span> UK
+                    </p>
+                  </td>
+                  <td>
+                    <p class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">Glasgow</p>
+                  </td>
+                  <td>
+                    <span class="badge badge-light2-primary fs-7 fw-bold py-3 px-4">Internship</span>
+                  </td>
+                  <td>
+                    <p class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">Jul 14, 2023</p>
+                  </td>
+                  <td class="text-end">
+                    <a
+                      href="https://group.bnpparibas/en/careers/job-offer/risk-data-analyst-support"
+                      target="_blank"
+                      class="btn btn-primary btn-sm px-4 me-2"
+                      >Apply</a
+                    >
+                    <button class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1">
+                      <span [inlineSVG]="'./assets/media/heart-add.svg'" class="svg-icon svg-icon-3"></span>
+                    </button>
+                    <button type="button" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                      <span [inlineSVG]="'./assets/media/eye-icon.svg'" class="svg-icon svg-icon-3"></span>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <div class="me-5">
+                        <img src="./assets/media/company/citibank.svg" class="w-100" alt="" />
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <p class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                      2023, EMEA, Markets, Equity Cash/Derivatives & Structuring, Internship
+                    </p>
+                  </td>
+                  <td>
+                    <p class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">
+                      <span class="fi fi-it"></span> France
+                    </p>
+                  </td>
+                  <td>
+                    <p class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">Paris</p>
+                  </td>
+                  <td>
+                    <span class="badge badge-light2-primary fs-7 fw-bold py-3 px-4">Internship</span>
+                  </td>
+                  <td>
+                    <p class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">Jul 14, 2023</p>
+                  </td>
+                  <td class="text-end">
+                    <a
+                      href="https://group.bnpparibas/en/careers/job-offer/risk-data-analyst-support"
+                      target="_blank"
+                      class="btn btn-primary btn-sm px-4 me-2"
+                      >Apply</a
+                    >
+                    <button class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1">
+                      <span [inlineSVG]="'./assets/media/heart-add.svg'" class="svg-icon svg-icon-3"></span>
+                    </button>
+                    <button type="button" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                      <span [inlineSVG]="'./assets/media/eye-icon.svg'" class="svg-icon svg-icon-3"></span>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+              <!-- end::Table body -->
+            </table>
+            <!-- end::Table -->
+            <ul class="pagination">
+              <li class="page-item previous">
+                <a class="page-link cursor-pointer">
+                  <i class="previous"></i>
+                </a>
+              </li>
+
+              <li class="page-item active">
+                <a class="page-link cursor-pointer"> 1 </a>
+              </li>
+
+              <li class="page-item">
+                <a class="page-link cursor-pointer"> 2 </a>
+              </li>
+
+              <li class="page-item">
+                <a class="page-link cursor-pointer"> 3 </a>
+              </li>
+
+              <li class="page-item">
+                <a class="page-link cursor-pointer"> 4 </a>
+              </li>
+
+              <li class="page-item">
+                <a class="page-link cursor-pointer"> 5 </a>
+              </li>
+
+              <li class="page-item">
+                <a class="page-link cursor-pointer"> 6 </a>
+              </li>
+
+              <li class="page-item next">
+                <a class="page-link cursor-pointer">
+                  <i class="next"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

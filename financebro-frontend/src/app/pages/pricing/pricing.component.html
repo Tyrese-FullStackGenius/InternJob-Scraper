@@ -1,0 +1,38 @@
+<section class="banner inner pricing">
+  <div class="container">
+    <div class="text text-center">
+      <h1>Pricing Plans</h1>
+      <p>
+        Upgrade now to receive full access to the platform. Features include: Email notifications for deadlines and new
+        opportunities, a personal tracking page to keep track of your progress, a my interests page to keep track of
+        opportunities, and access to our full range of opportunities globally.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="pricing-sec">
+  <div class="container">
+    <div class="content">
+      <div class="row justify-content-between align-items-center">
+        <div class="col-md-6" *ngFor="let product of products | keyvalue">
+          <div class="pricing-col">
+            <h3>{{ product.value.name }}</h3>
+            <h2>${{ product.value.price }}</h2>
+            <div class="sessions">Full Access</div>
+            <ul class="list-unstyled">
+              <li><img src="assets/media/check-circle.svg" alt="One time payment" /> One time payment</li>
+              <li><img src="assets/media/check-circle.svg" alt="Email notifications" /> Email notifications</li>
+              <li><img src="assets/media/check-circle.svg" alt="Personal tracking page" /> Personal tracking page</li>
+              <li><img src="assets/media/check-circle.svg" alt="My interests page" /> My interests page</li>
+              <li><img src="assets/media/check-circle.svg" alt="1000+ opportunities" /> 1000+ opportunities</li>
+            </ul>
+            <button class="btn btn-primary" (click)="upgrade(product.key)" [disabled]="loading">
+              <span>Upgrade Now</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

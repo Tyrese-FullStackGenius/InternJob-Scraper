@@ -1,0 +1,45 @@
+<ng-container *ngIf="reduceView">
+  <ng-container *ngIf="fullView; else reducedList">
+    <ng-container *ngIf="!imagesView">
+      <ng-container *ngTemplateOutlet="itemsList; context: { items: items }"></ng-container>
+    </ng-container>
+    <ng-container *ngIf="imagesView">
+      <ng-container *ngTemplateOutlet="iconsList; context: { items: items }"></ng-container>
+    </ng-container>
+  </ng-container>
+  <ng-template #reducedList>
+    <span (click)="showFullView()">
+      <ng-container *ngIf="!imagesView">
+        <ng-container *ngTemplateOutlet="itemsList; context: { items: items.slice(0, visible) }"></ng-container>
+      </ng-container>
+      <ng-container *ngIf="imagesView">
+        <ng-container *ngTemplateOutlet="iconsList; context: { items: items.slice(0, visible) }"></ng-container>
+      </ng-container>
+      ...
+    </span>
+  </ng-template>
+</ng-container>
+<ng-container *ngIf="!reduceView">
+  <ng-container *ngIf="!imagesView">
+    <ng-container *ngTemplateOutlet="itemsList; context: { items: items }"></ng-container>
+  </ng-container>
+  <ng-container *ngIf="imagesView">
+    <ng-container *ngTemplateOutlet="iconsList; context: { items: items }"></ng-container>
+  </ng-container>
+</ng-container>
+
+<ng-template #itemsList let-items="items">{{ showJoined(items) }}</ng-template>
+<ng-template #iconsList let-items="items">
+  <ng-container *ngFor="let item of items">
+    <img
+      [matTooltip]="item.name"
+      matTooltipPosition="above"
+      *ngIf="item.code"
+      [src]="'/assets/media/flags-svg/' + item.code.toLowerCase() + '.svg'"
+      [alt]="item.name"
+      width="30"
+      class="m-1"
+      style="border: 1px solid #eee"
+    />
+  </ng-container>
+</ng-template>

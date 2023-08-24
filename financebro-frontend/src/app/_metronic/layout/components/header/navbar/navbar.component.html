@@ -1,0 +1,96 @@
+<!--begin::Search-->
+<!--<div class="app-navbar-item align-items-stretch" [ngClass]="itemClass">
+  <div id="kt_header_search" class="header-search d-flex align-items-stretch" data-kt-search-keypress="true"
+    data-kt-search-min-length="2" data-kt-search-enter="enter" data-kt-search-layout="menu"
+    data-kt-menu-trigger="{default: 'click'}" data-kt-menu-overflow="false" data-kt-menu-permanent="true"
+    data-kt-menu-placement="bottom-end" data-kt-search="true">
+    <div class="d-flex align-items-center" data-kt-search-element="toggle" id="kt_header_search_toggle">
+      <div [ngClass]="btnClass">
+        <span [inlineSVG]="'./assets/media/icons/duotune/general/gen021.svg'" class="svg-icon"
+          [ngClass]="btnIconClass"></span>
+      </div>
+    </div>
+    <app-search-result-inner data-kt-search-element="content" data-kt-menu="true"
+      class="menu menu-sub menu-sub-dropdown p-7 w-325px w-md-375px"></app-search-result-inner>
+  </div>
+</div>-->
+<!--end::Search-->
+
+<!--begin::Activities-->
+<!--<div class="app-navbar-item" [ngClass]="itemClass">
+  <div [ngClass]="btnClass" id="kt_activities_toggle">
+    <span [inlineSVG]="'./assets/media/icons/duotune/general/gen032.svg'" class="svg-icon"
+      [ngClass]="btnIconClass"></span>
+  </div>
+</div>-->
+<!--end::Activities-->
+
+<!--begin::Notifications-->
+<!--<div class="app-navbar-item" [ngClass]="itemClass">
+  <div [ngClass]="btnClass" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent"
+    data-kt-menu-placement="bottom-end">
+    <span [inlineSVG]="'./assets/media/icons/duotune/general/gen022.svg'" class="svg-icon"
+      [ngClass]="btnIconClass"></span>
+  </div>
+  <app-notifications-inner></app-notifications-inner>
+</div>-->
+<!--end::Notifications-->
+
+<!--begin::Chat-->
+<!--<div class="app-navbar-item" [ngClass]="itemClass">
+  <div [ngClass]="btnClass" class="position-relative" id="kt_drawer_chat_toggle">
+    <span [inlineSVG]="'./assets/media/icons/duotune/communication/com012.svg'" class="svg-icon"
+      [ngClass]="btnIconClass"></span>
+    <span
+      class="bullet bullet-dot bg-success h-6px w-6px position-absolute translate-middle top-0 start-50 animation-blink">
+    </span>
+  </div>
+</div>-->
+<!--end::Chat-->
+
+<!--begin::Quick links-->
+<!--<div class="app-navbar-item" [ngClass]="itemClass">
+  &lt;!&ndash;begin::Menu wrapper&ndash;&gt;
+  <div [ngClass]="btnClass" data-kt-menu-trigger="click" data-kt-menu-attach="parent"
+    data-kt-menu-placement="bottom-end">
+    <span [inlineSVG]="'./assets/media/icons/duotune/general/gen025.svg'" class="svg-icon"
+      [ngClass]="btnIconClass"></span>
+  </div>
+  &lt;!&ndash;end::Menu wrapper&ndash;&gt;
+  <app-quick-links-inner></app-quick-links-inner>
+</div>-->
+<!--end::Quick links-->
+
+<!--begin::Theme mode-->
+<!--<div class="app-navbar-item" [ngClass]="itemClass">
+  <app-theme-mode-switcher [toggleBtnClass]="btnClass"
+    toggleBtnClass="{`btn-active-light-primary btn-custom ${toolbarButtonHeightClass}`}">
+  </app-theme-mode-switcher>
+</div>-->
+<!--end::Theme mode-->
+
+<!--begin::User menu-->
+<div class="app-navbar-item" [ngClass]="itemClass">
+  <app-upgrade-account *ngIf="!authService.currentUserValue?.isPaid"></app-upgrade-account>
+  <!--begin::Menu wrapper-->
+  <div class="cursor-pointer symbol ms-2" [ngClass]="userAvatarClass"
+  data-kt-menu-trigger="{default: 'click'}"
+    data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end"
+  >
+    <img src="./assets/media/avatars/300-1.jpg" alt="" />
+  </div>
+  <app-user-inner data-kt-menu='true'></app-user-inner>
+  <!--end::Menu wrapper-->
+</div>
+<!--end::User menu-->
+
+<!--begin::Header menu toggle-->
+<!--<ng-container *ngIf="appHeaderDefaulMenuDisplay">
+  <div class="app-navbar-item d-lg-none ms-2 me-n3" title="Show header menu">
+    <div class="btn btn-icon btn-active-color-primary w-35px h-35px" id="kt_app_header_menu_toggle">
+      <span [inlineSVG]="'./assets/media/icons/duotune/text/txt001.svg'" class="svg-icon"
+        [ngClass]="btnIconClass"></span>
+    </div>
+  </div>
+</ng-container>-->
+<!--end::Header menu toggle-->

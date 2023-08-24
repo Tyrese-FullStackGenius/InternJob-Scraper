@@ -1,0 +1,50 @@
+:host {
+  width: 100%;
+}
+
+.table {
+  th,
+  td {
+    padding: 8px;
+  }
+}
+
+.personal-tracker {
+  position: relative;
+
+  &::before {
+    content: '';
+    width: 100%;
+    height: 1px;
+    background: #aaa;
+    position: absolute;
+    left: 0;
+    top: 30px;
+    z-index: 1;
+  }
+
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    margin: 30px 0 10px 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .form-check {
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+
+    mat-checkbox {
+      background: #fff;
+    }
+
+    div {
+      white-space: nowrap;
+    }
+  }
+}
